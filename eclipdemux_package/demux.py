@@ -21,7 +21,10 @@ from collections import Counter
 # from collections import defaultdict
 from collections import OrderedDict
 from collections import namedtuple
-from itertools import izip
+try:
+    from itertools import izip as zip
+except ImportError:
+    pass
 import gzip
 import os
 from optparse import OptionParser
@@ -330,7 +333,7 @@ def _hamming(matching_function, word1, word2):
     if len(word1) < len(word2):
         raise_with_traceback(HammingUnequalLengthsValueError(word1, word2))
     return sum(not matching_function(letter1, letter2)
-               for letter1, letter2 in izip(word1, word2))
+               for letter1, letter2 in zip(word1, word2))
 
 
 def hamming_strict(word1, word2):
