@@ -618,7 +618,7 @@ def _fqgz_open(fastq_or_fastqgz_filename):
     Returns: opened file handle
     """
     if os.path.splitext(fastq_or_fastqgz_filename)[1] == ".gz":
-        opened_fastq_io = gzip.open(fastq_or_fastqgz_filename)
+        opened_fastq_io = gzip.open(fastq_or_fastqgz_filename, 'rt')
     else:
         opened_fastq_io = open(fastq_or_fastqgz_filename)
     return opened_fastq_io
@@ -688,9 +688,9 @@ def _demuxdicts_demuxedfiles_opener(demuxeddict1, demuxeddict2, dataset, newname
         Returns: None
         """
         filename1 = _demuxfilename(dataset, newname, "r1", bcid)
-        demuxeddict1[bcseq] = gzip.open(filename1, 'w')
+        demuxeddict1[bcseq] = gzip.open(filename1, 'wt')
         filename2 = _demuxfilename(dataset, newname, "r2", bcid)
-        demuxeddict2[bcseq] = gzip.open(filename2, 'w')
+        demuxeddict2[bcseq] = gzip.open(filename2, 'wt')
 
     return demuxedfiles_open
 
