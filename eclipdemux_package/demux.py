@@ -625,7 +625,7 @@ def _fqgz_open(fastq_or_fastqgz_filename):
 
 
 def cwlhandover_write(dataset, newname,
-                      expectedbarcodeida, expectedbarcodeidb, direct='./'):
+                      expectedbarcodeida, expectedbarcodeidb, direct=''):
     """
     hand over these strings to next cwl tool (parsebarcodes)
     done here instead of in cwl InitialWorkDirRequirement
